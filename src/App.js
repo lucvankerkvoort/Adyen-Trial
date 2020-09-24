@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Payment } from "./features/payment/Payment";
+import { Donate } from "./features/preview/Donate";
 import { Preview } from "./features/preview/Preview";
 import { Status } from "./features/status/Status";
+import Donations from "./components/Donations";
 import "./App.css";
 
-function App() {
+const App = () => {
+  const [amount, setAmount] = useState(25);
+
   return (
     <Router>
       <Switch>
+        <Route path="/donate/:type">
+          <Donate amount={amount} />
+        </Route>
         <Route path="/preview/:type">
           <Preview />
         </Route>
@@ -20,7 +27,8 @@ function App() {
         </Route>
         <Route path="/">
           <div className="main-container">
-            <div className="info">
+            <Donations />
+            {/* <div className="info">
               <h1>Select a demo</h1>
               <p>Click to view an interactive example of a PCI-compliant React UI integration for online payments.</p>
               <p>
@@ -32,19 +40,21 @@ function App() {
                 To learn more about client-side integration solutions, check out{" "}
                 <a href="https://docs.adyen.com/checkout">Online payments.</a>
               </p>
-            </div>
+            </div> */}
+
+            <h1>Premium Account</h1>
             <ul className="integration-list">
               <li className="integration-list-item">
                 <Link to="/preview/dropin" className="integration-list-item-link">
                   <div className="title-container">
-                    <p className="integration-list-item-title">Drop-in</p>
+                    <p className="integration-list-item-title">Premium</p>
                   </div>
                 </Link>
               </li>
-              <li className="integration-list-item">
-                <Link to="/preview/card" className="integration-list-item-link">
-                  <div className="title-container">
-                    <p className="integration-list-item-title">Card</p>
+              {/* <li className="integration-list-item">
+                <Link to="/donate/dropin" className="integration-list-item-link">
+                  <div onClick={() => setAmount(25)} className="title-container">
+                    <p className="integration-list-item-title">$25,- Donation</p>
                   </div>
                 </Link>
               </li>
@@ -96,13 +106,13 @@ function App() {
                     <p className="integration-list-item-title">PaySafe card</p>
                   </div>
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </Route>
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;

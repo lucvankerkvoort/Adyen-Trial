@@ -46,6 +46,7 @@
   justify-content: center;
   align-items: center;
   border: 1px solid #f7f8f9;
+  cursor: pointer;
 }
 
 .integration-list-item:hover {
@@ -157,6 +158,11 @@
   height: 64px;
   margin: 16px;
   width: 64px;
+}
+.order-summary-list-list-item-image-donation {
+  height: 64px;
+  margin: 16px;
+  width: 104px;
 }
 .order-summary-list-list-item-title {
   font-weight: 700;
